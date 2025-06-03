@@ -8,29 +8,41 @@ The **Cattle Health Monitoring System** is an end-to-end IoT and Machine Learnin
   Follow these steps to set up and run the project locally:
 
 1. **Clone the Repository**
-   ```bash
-   git clone https://github.com/your-username/cattle-health-monitoring.git
-   cd cattle-health-monitoring
+ 
+ ```bash
+ 
+ git clone https://github.com/your-username/cattle-health-monitoring.git
 
- Set Up a Virtual Environment 
+cd cattle-health-monitoring
+
+Set Up a Virtual Environment 
 
 python -m venv venv
+
 source venv/bin/activate  # For Linux/macOS
+
 venv\Scripts\activate     # For Windows
+
 Install Python Dependencies
+
 Make sure you have Python 3.7+ installed.
 
 pip install -r requirements.txt
+
 Configure Environment Variables
+
 Create a .env file to store your API keys, ThingSpeak channel IDs, or database URIs as needed:
+
 THINGSPEAK_API_KEY=your_key
 
 Run the Flask Application
+
 python server.py
 
 
 
 🚀 Usage
+
 Once the application is running, you can:
 
 Open your browser and go to http://localhost:5000 to access the main dashboard.
@@ -44,6 +56,7 @@ Receive alerts or notifications if any abnormal readings are detected.
 Analyze historical data to understand trends and patterns in cattle health.
 
 📊 Features
+
 Real-time IoT data collection from multiple sensors
 
 Integration with ThingSpeak for cloud-based data storage
@@ -57,6 +70,7 @@ Clean and user-friendly web dashboard using Flask
 Optional database logging for historical analysis
 
 🛠️ Technologies Used
+
 Python (Flask, Pandas, Scikit-learn)
 
 ESP8266 Microcontroller
@@ -68,6 +82,7 @@ ThingSpeak for cloud integration
 HTML/CSS/JS for frontend dashboard
 
 🤝 Contributing
+
 Contributions are welcome! If you'd like to improve the system or add features:
 
 Fork the repository
@@ -83,7 +98,9 @@ Open a Pull Request
 
 
 📬 Contact
-Developed by Team_16
+
+ Developed by Team_16
+
 📧 Email: hanumantjadhav0435@gmail.com
 
 
