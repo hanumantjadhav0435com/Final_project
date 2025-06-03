@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cattle Health Detail</title>
+  <link rel="stylesheet" href="ind.css">
+</head>
+<body>
+
+  <header class="header">
+    <div class="logo">Cattle Health Monitoring</div>
+  </header>
+
+  <main class="main-container">
+    <section class="cattle-details">
+      <h2>Cattle Health Details</h2>
+      <div class="cattle-profile">
+        <div class="profile-picture">
+          <img src="cattle-avatar.png" alt="Cattle Profile">
+        </div>
+        <div class="profile-info">
+          <h3>Name: Bala</h3>
+          <p>Tag ID: 12345</p>
+          <p>Breed: BJP</p>
+          <p>Age: 4 years</p>
+        </div>
+      </div>
+
+      <div class="health-stats">
+        <div class="stat-card">
+          <h4>Temperature</h4>
+          <p id="temperature">37.5°C</p>
+        </div>
+        <div class="stat-card">
+          <h4>Humidity</h4>
+          <p id="humidity">65%</p>
+        </div>
+        <div class="stat-card">
+          <h4>Accelerometer</h4>
+          <p id="movement">Moderate Activity</p>
+        </div>
+      </div>
+
+      <div class="health-alert">
+        <h4>Health Alert</h4>
+        <p id="alert-message">Normal Health Status.</p>
+      </div>
+      
+      <div class="actions">
+        <button class="btn">View Health History</button>
+        <button class="btn">Update Health Data</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    color: #333;
+  }
+  
+  header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .main-container {
+    padding: 20px;
+  }
+  
+  h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+  
+  .cattle-details {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .cattle-profile {
+    display: flex;
+    margin-bottom: 30px;
+  }
+  
+  .profile-picture img {
+    width: 150px;
+    height: 150px;
+    border-radius: 8px;
+    margin-right: 20px;
+  }
+  
+  .profile-info h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .profile-info p {
+    margin-bottom: 5px;
+  }
+  
+  .health-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+  }
+  
+  .stat-card {
+    background-color: #ecf0f1;
+    padding: 20px;
+    text-align: center;
+    width: 30%;
+    border-radius: 8px;
+  }
+  
+  .stat-card h4 {
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+  
+  .stat-card p {
+    font-size: 22px;
+    font-weight: bold;
+  }
+  
+  .health-alert {
+    background-color: #f39c12;
+    color: white;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  .actions {
+    text-align: center;
+  }
+  
+  .actions .btn {
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin: 10px;
+    cursor: pointer;
+  }
+  
+  .actions .btn:hover {
+    background-color: #2980b9;
+  }
+  

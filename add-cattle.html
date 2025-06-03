@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Add New Cattle</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f4f4f4; padding: 20px; }
+    .container { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 10px; }
+    .form-group { margin-bottom: 15px; }
+    label { display: block; margin-bottom: 5px; font-weight: bold; }
+    input[type="text"],
+    input[type="number"],
+    input[type="date"] {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+    }
+    .btn-submit {
+      padding: 10px 20px;
+      background-color: #28a745;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .btn-submit:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Add New Cattle</h1>
+    <form id="add-cattle-form">
+      <div class="form-group">
+        <label for="cattle-name">Cattle Name</label>
+        <input type="text" id="cattle-name" placeholder="Enter cattle name" required />
+      </div>
+
+      <div class="form-group">
+        <label for="cattle-age">Age (in years)</label>
+        <input type="number" id="cattle-age" placeholder="Enter cattle age" min="0" max="25" required />
+      </div>
+
+      <div class="form-group">
+        <label for="cattle-temperature">Temperature (°C)</label>
+        <input type="number" id="cattle-temperature" step="0.1" readonly />
+      </div>
+
+      <div class="form-group">
+        <label for="cattle-humidity">Humidity (%)</label>
+        <input type="number" id="cattle-humidity" step="0.1" readonly />
+      </div>
+
+      <div class="form-group">
+        <label>Accelerometer Readings (g)</label>
+        <input type="number" id="cattle-accel-x" placeholder="X-axis" readonly />
+        <input type="number" id="cattle-accel-y" placeholder="Y-axis" readonly style="margin-top: 5px;"/>
+        <input type="number" id="cattle-accel-z" placeholder="Z-axis" readonly style="margin-top: 5px;"/>
+      </div>
+
+      <div class="form-group">
+        <label for="last-treatment">Last Treatment Date</label>
+        <input type="date" id="last-treatment" required />
+      </div>
+
+      <button type="submit" class="btn-submit">Add Cattle</button>
+    </form>
+  </div>
+
+  <script>
+    const API_URL = "http://localhost:5000/predict"; // Flask endpoint
+
+    async function fetchSensorData() {
+      try {
+        const response = await fetch(API_URL, { method: "GET" });
+        const data = await response.json();
+
+        if (data.sensor_data) {
+          document.getElementById("cattle-temperature").value = data.sensor_data.Temperature;
+          document.getElementById("cattle-humidity").value = data.sensor_data.Humidity;
+
+          document.getElementById("cattle-accel-x").value = data.sensor_data.AccelX;
+          document.getElementById("cattle-accel-y").value = data.sensor_data.AccelY;
+          document.getElementById("cattle-accel-z").value = data.sensor_data.AccelZ;
+        }
+      } catch (err) {
+        console.error("Failed to fetch sensor data:", err);
+      }
+    }
+
+    // Fetch data on load
+    fetchSensorData();
+    setInterval(fetchSensorData, 5000); // Update every 5 seconds
+
+    // Form submission logic
+    document.getElementById('add-cattle-form').addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const name = document.getElementById('cattle-name').value.trim();
+      const age = document.getElementById('cattle-age').value.trim();
+      const temperature = document.getElementById('cattle-temperature').value.trim();
+      const humidity = document.getElementById('cattle-humidity').value.trim();
+      const accelX = document.getElementById('cattle-accel-x').value.trim();
+      const accelY = document.getElementById('cattle-accel-y').value.trim();
+      const accelZ = document.getElementById('cattle-accel-z').value.trim();
+      const lastTreatment = document.getElementById('last-treatment').value.trim();
+
+      const newCattle = {
+        name,
+        age,
+        temperature,
+        humidity,
+        accelX,
+        accelY,
+        accelZ,
+        lastTreatment
+      };
+
+      const cattleList = JSON.parse(localStorage.getItem('cattleData')) || [];
+      cattleList.push(newCattle);
+      localStorage.setItem('cattleData', JSON.stringify(cattleList));
+
+      alert(`Cattle "${name}" added successfully!`);
+      window.location.href = 'dashboard.html';
+    });
+  </script>
+</body>
+</html>
